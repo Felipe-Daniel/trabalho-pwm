@@ -1,5 +1,4 @@
-
-module binary_to_3digits(
+module binary_to_digits(
     input wire [3:0] binary_in, // 4-bit binary input (0-10)
     output reg [3:0] digit0,    // Units digit
     output reg [3:0] digit1,    // Tens digit

@@ -1,16 +1,16 @@
-`timescale 1ns / 1ps
+`timescale 1ns / 100ps
 module pwm_tb;
  // Inputs
  reg clk;
- reg btn_increase;
- reg btn_decrease;
+ reg swt_increase;
+ reg swt_decrease;
  // Outputs
  wire PWM_OUT;
  // Instantiate the PWM Generator with variable duty cycle in Verilog
- PWM_Generator_Verilog PWM_Generator_Unit(
+ pwm pwm(
   .clk(clk), 
-  .btn_increase(btn_increase), 
-  .btn_decrease(btn_decrease), 
+  .swt_increase(swt_increase), 
+  .swt_decrease(swt_decrease), 
   .PWM_OUT(PWM_OUT)
  );
  // Create 100Mhz clock
@@ -19,31 +19,40 @@ module pwm_tb;
  forever #5 clk = ~clk;
  end 
  initial begin
-  btn_increase = 0;
-  btn_decrease = 0;
+  swt_increase = 0;
+  swt_decrease = 0;
   #100; 
-    btn_increase = 1; 
+    swt_increase = 1; 
   #100;// increase duty cycle by 10%
-    btn_increase = 0;
+    swt_increase = 0;
   #100; 
-    btn_increase = 1;
+    swt_increase = 1;
   #100;// increase duty cycle by 10%
-    btn_increase = 0;
+    swt_increase = 0;
   #100; 
-    btn_increase = 1;
+    swt_increase = 1;
   #100;// increase duty cycle by 10%
-    btn_increase = 0;
+    swt_increase = 0;
   #100;
-    btn_decrease = 1; 
+    swt_decrease = 1; 
   #100;//decrease duty cycle by 10%
-    btn_decrease = 0;
+    swt_decrease = 0;
   #100; 
-    btn_decrease = 1;
+    swt_decrease = 1;
   #100;//decrease duty cycle by 10%
-    btn_decrease = 0;
+    swt_decrease = 0;
   #100;
-    btn_decrease = 1;
+    swt_decrease = 1;
   #100;//decrease duty cycle by 10%
-    btn_decrease = 0;
+    swt_decrease = 0;
+	 
+	 #100
+	 swt_decrease = 1;
+	 swt_increase = 1;
+	 
+	 #100
+	 swt_decrease = 1;
+	 swt_increase = 1;
+	 
  end
 endmodule
