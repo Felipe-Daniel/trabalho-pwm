@@ -6,12 +6,15 @@ module pwm_tb;
  reg swt_decrease;
  // Outputs
  wire PWM_OUT;
+ wire [3:0] counter_PWM;
  // Instantiate the PWM Generator with variable duty cycle in Verilog
+ 
  pwm pwm(
   .clk(clk), 
   .swt_increase(swt_increase), 
   .swt_decrease(swt_decrease), 
-  .PWM_OUT(PWM_OUT)
+  .PWM_OUT(PWM_OUT),
+  .counter_PWM(counter_PWM)
  );
  // Create 100Mhz clock
  initial begin
@@ -21,38 +24,32 @@ module pwm_tb;
  initial begin
   swt_increase = 0;
   swt_decrease = 0;
+   
+  #100;
+	 swt_increase = 1; 
+  #100;// increase duty cycle by 10%
+    swt_increase = 0;
   #100; 
+    swt_increase = 1;
+  #100;// increase duty cycle by 10%
+    swt_increase = 0;
+  #100; 
+    swt_increase = 1;
+  #100;// increase duty cycle by 10%
+    swt_increase = 0;
+  #100;
     swt_increase = 1; 
-  #100;// increase duty cycle by 10%
+  #100;//decrease duty cycle by 10%
     swt_increase = 0;
   #100; 
     swt_increase = 1;
-  #100;// increase duty cycle by 10%
+  #100;//decrease duty cycle by 10%
     swt_increase = 0;
-  #100; 
+  #100;
     swt_increase = 1;
-  #100;// increase duty cycle by 10%
+  #100;//decrease duty cycle by 10%
     swt_increase = 0;
-  #100;
-    swt_decrease = 1; 
-  #100;//decrease duty cycle by 10%
-    swt_decrease = 0;
-  #100; 
-    swt_decrease = 1;
-  #100;//decrease duty cycle by 10%
-    swt_decrease = 0;
-  #100;
-    swt_decrease = 1;
-  #100;//decrease duty cycle by 10%
-    swt_decrease = 0;
 	 
-	 #100
-	 swt_decrease = 1;
-	 swt_increase = 1;
-	 
-	 #100
-	 swt_decrease = 1;
-	 swt_increase = 1;
 	 
  end
 endmodule

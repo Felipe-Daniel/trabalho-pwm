@@ -17,9 +17,9 @@ parameter standby = 1'b0,
 
 // Primeiro procedimento - Estado próximo
 always @(posedge clk or posedge rst) begin
-    /*if (rst) 
+    if (rst) 
         state <= standby;		  
-    else begin*/
+    else begin
         case (state)
             standby: begin
                 if (swt_start_stop == 1'b1) 
