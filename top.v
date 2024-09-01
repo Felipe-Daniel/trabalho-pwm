@@ -1,7 +1,7 @@
 module top (clk, SW, HEX0, HEX1, HEX2);
 
 input wire clk;
-input wire [3:0] SW;
+input wire [2:0] SW;
 output wire [6:0] HEX0;
 output wire [6:0] HEX1;
 output wire [6:0] HEX2;

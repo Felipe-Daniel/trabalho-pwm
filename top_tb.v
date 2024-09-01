@@ -1,0 +1,58 @@
+`timescale 1ns/ 100ps
+
+module top_tb;
+
+    reg clk;
+    reg SW2, SW1, SW0;
+
+    wire [6:0] HEX0;
+    wire [6:0] HEX1;
+    wire [6:0] HEX2;
+
+    wire [2:0] SW = {SW2, SW1, SW0};
+
+    top top (
+        .clk(clk),
+        .SW(SW),
+        .HEX0(HEX0),
+        .HEX1(HEX1),
+        .HEX2(HEX2)
+    );
+
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
+
+    initial begin
+        SW2 = 1'b0;
+        SW1 = 1'b0;
+        SW0 = 1'b0;
+        #20;
+
+		  // Liga
+        SW0 = 1'b1;
+		  #1
+
+		  // Aumenta
+        SW1 = 1'b1;
+		  #1
+		  SW1 = 1'b0;
+		  #20;
+	
+		  // Aumenta
+        SW1 = 1'b1;
+		  #1
+		  SW1 = 1'b0;
+		  #20;	
+		  
+		  // Diminui
+		  SW2 = 1'b1;
+		  #1
+		  SW2 = 1'b0;
+        #20;
+
+        $stop;
+    end
+
+endmodule
