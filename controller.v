@@ -1,6 +1,6 @@
 module controller (
     input wire clk,
-    input wire [17:0] SW,
+	 input wire [17:0] SW,
     output reg swt_increase,
     output reg swt_decrease,
     output reg swt_start_stop

@@ -9,6 +9,7 @@ output wire [6:0] HEX2;
 wire swt_increase, swt_decrease, swt_start_stop;
 wire motor_pwm, motor_running;
 wire [7:0] PWM_OUT;
+wire [3:0] DUTY_CYCLE;
 wire [3:0] digit0, digit1, digit2;
 
 
@@ -34,11 +35,12 @@ pwm pwm (
  .clk(clk),
  .swt_increase(swt_increase),  
  .swt_decrease(swt_decrease),
- .PWM_OUT(PWM_OUT)
+ .PWM_OUT(PWM_OUT),
+ . DUTY_CYCLE( DUTY_CYCLE)
 );
 
 binary_to_digits binary_to_digits (
-    .binary_in(PWM_OUT),
+    .binary_in( DUTY_CYCLE),
     .digit0(digit0),
     .digit1(digit1),
     .digit2(digit2)

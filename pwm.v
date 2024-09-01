@@ -4,13 +4,13 @@ module pwm
  swt_increase, // entrada para aumentar em 10%
  swt_decrease, // entrada para diminuir em 10%
  PWM_OUT,
- counter_PWM // sinal de saída PWM de 10MHz
+ DUTY_CYCLE // sinal de saída PWM de 10MHz
     );
  input clk;
  input swt_increase;
  input swt_decrease;
  output PWM_OUT;
- output counter_PWM;
+ output DUTY_CYCLE;
  wire slow_clk_enable; // sinal de habilitação de clock lento para FFs de debounce
  reg[27:0] counter_debounce = 0; // contador para criar sinais de habilitação de clock lento
  wire tmp1, tmp2, duty_inc;

@@ -3,7 +3,9 @@
 module top_tb;
 
     reg clk;
-    reg SW2, SW1, SW0;
+    reg SW0;
+	 reg SW2;
+	 reg SW1;
 
     wire [6:0] HEX0;
     wire [6:0] HEX1;
@@ -35,35 +37,35 @@ module top_tb;
 
 		  // Liga
         SW0 = 1'b1;
-		  #3
+		  #100
 		  
 		  $display("At time %t: HEX0 = %b, HEX1 = %b, HEX2 = %b", 
-                  $time, HEX0, HEX1, HEX2);
+                  $time, HEX0, HEX1, HEX2); //50
 		  
 
 		  // Aumenta
         SW1 = 1'b1;
-		  #3;
+		  #100
 		  SW1 = 1'b0;
-		  #3;
+		  #100
 		  
 		  $display("At time %t: HEX0 = %b, HEX1 = %b, HEX2 = %b", 
                   $time, HEX0, HEX1, HEX2);
 	
 		  // Aumenta
         SW1 = 1'b1;
-		  #3
+		  #100
 		  SW1 = 1'b0;
-		  #20;
+		  #100
 		 
 			$display("At time %t: HEX0 = %b, HEX1 = %b, HEX2 = %b", 
                   $time, HEX0, HEX1, HEX2); 
 		  
 		  // Diminui
 		  SW2 = 1'b1;
-		  #20
+		  #100
 		  SW2 = 1'b0;
-        #20;
+        #100
 		  
 		  $display("At time %t: HEX0 = %b, HEX1 = %b, HEX2 = %b", 
                   $time, HEX0, HEX1, HEX2);
