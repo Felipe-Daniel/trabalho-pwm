@@ -18,8 +18,8 @@ module pwm_tb;
  );
  // Create 100Mhz clock
  initial begin
- clk = 0;
- forever #5 clk = ~clk;
+	 clk = 0;
+	 forever #5 clk = ~clk;
  end 
  initial begin
   swt_increase = 0;

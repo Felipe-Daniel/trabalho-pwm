@@ -1,5 +1,5 @@
 module ihm(
-    input clk, rst, swt_increase, swt_decrease, swt_start_stop,
+    input clk, swt_increase, swt_decrease, swt_start_stop,
     output reg motor_pwm, motor_running
 	 //output reg [6:0] display
 );
@@ -16,10 +16,8 @@ parameter standby = 1'b0,
 //initial state <= standby;
 
 // Primeiro procedimento - Estado próximo
-always @(posedge clk or posedge rst) begin
-    if (rst) 
-        state <= standby;		  
-    else begin
+always @(posedge clk) begin	  
+    begin
         case (state)
             standby: begin
                 if (swt_start_stop == 1'b1) 

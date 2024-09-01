@@ -1,5 +1,4 @@
-module display (
-    input wire [3:0] PWM_OUT,         // 4-bit input ranging from 0 to 10
+module display (       
     input wire clk,
     input wire [3:0] digit0,
     input wire [3:0] digit1,
@@ -27,7 +26,7 @@ always @(*) begin
     endcase
    // DEZENAS
     case (digit1)
-        4'b0000: HEX1 = 7'b0000001; // "000"
+        4'b0000: HEX1 = 7'b1000000; // "000"
         4'b0001: HEX1 = 7'b1111100; // "010"
         4'b0010: HEX1 = 7'b0100100; // "020"
         4'b0011: HEX1 = 7'b0110000; // "030"

@@ -28,29 +28,40 @@ module top_tb;
         SW2 = 1'b0;
         SW1 = 1'b0;
         SW0 = 1'b0;
-        #20;
+        #3;
+		  
 
 		  // Liga
         SW0 = 1'b1;
-		  #1
+		  #3
+		  
 
 		  // Aumenta
         SW1 = 1'b1;
-		  #1
+		  #3;
 		  SW1 = 1'b0;
-		  #20;
+		  #3;
+		  
+		  $display("At time %t: HEX0 = %b, HEX1 = %b, HEX2 = %b", 
+                  $time, HEX0, HEX1, HEX2);
 	
 		  // Aumenta
         SW1 = 1'b1;
-		  #1
+		  #3
 		  SW1 = 1'b0;
-		  #20;	
+		  #3;
+		 
+			$display("At time %t: HEX0 = %b, HEX1 = %b, HEX2 = %b", 
+                  $time, HEX0, HEX1, HEX2); 
 		  
 		  // Diminui
 		  SW2 = 1'b1;
-		  #1
+		  #3
 		  SW2 = 1'b0;
-        #20;
+        #3;
+		  
+		  $display("At time %t: HEX0 = %b, HEX1 = %b, HEX2 = %b", 
+                  $time, HEX0, HEX1, HEX2);
 
         $stop;
     end

@@ -1,13 +1,16 @@
 module top (clk, SW, HEX0, HEX1, HEX2);
 
 input wire clk;
-input wire [2:0] SW;
+input wire [17:0] SW;
 output wire [6:0] HEX0;
 output wire [6:0] HEX1;
 output wire [6:0] HEX2;
 
-wire swt_increase, swt_decrease, swt_start, swt_stop;
+wire swt_increase, swt_decrease, swt_start_stop;
 wire motor_pwm, motor_running;
+wire [7:0] PWM_OUT;
+wire [3:0] digit0, digit1, digit2;
+
 
 controller controller (
   .clk(clk),
@@ -19,8 +22,7 @@ controller controller (
 
 
 ihm ihm (
-    .clk(clk),        
-    .rst(rst),                 
+    .clk(clk),                    
     .swt_increase(swt_increase),  
     .swt_decrease(swt_decrease), 
     .swt_start_stop(swt_start_stop),      
